@@ -1,78 +1,94 @@
-﻿@model ThaLeague.Models.Artist
+﻿@model ThaLeague.ViewModels.ArtistViewModel
 
 @{
     ViewData["Title"] = "Create";
 }
 
-<h1>Create</h1>
+<div class="container curved text-center" style="max-width:800px; background-color:black;">
+    <h1 class="text-light">ADD NEW ARTIST</h1>
 
-<h4>Artist</h4>
-<hr />
-<div class="row">
-    <div class="col-md-4">
-        <form asp-action="Create">
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <div class="form-group">
-                <label asp-for="FirstName" class="control-label"></label>
-                <input asp-for="FirstName" class="form-control" />
-                <span asp-validation-for="FirstName" class="text-danger"></span>
+    <hr />
+    <form enctype="multipart/form-data" asp-action="Create">
+        <div class="row">
+            <div class="col-md-6">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <div class="form-group">
+                    <input asp-for="FirstName" placeholder="First Name" class="form-control bg-light" />
+                    <span asp-validation-for="FirstName" class="text-danger"></span>
+                </div>
+                <div class="form-group bottom-space">
+                    <input asp-for="StageName" placeholder="Alias" class="form-control bg-light" />
+                    <span asp-validation-for="StageName" class="text-danger"></span>
+                </div>
+                <div class="input-group mb-3">
+                    <span asp-validation-for="Spotify" class="input-group-text" id="basic-addon3">spotify.com/</span>
+                    <input asp-for="Spotify" type="text" placeholder="user_name" class="form-control bg-light" id="basic-url" aria-describedby="basic-addon3">
+                </div>
+                <div class="input-group mb-3">
+                    <span asp-validation-for="Soundcloud" class="input-group-text" id="basic-addon3">soundcloud.com/</span>
+                    <input asp-for="Soundcloud" type="text" placeholder="user_name" class="form-control bg-light" id="basic-url" aria-describedby="basic-addon3">
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group bottom-space">
+                    <input asp-for="LastName" placeholder="Last Name" class="form-control bg-light" />
+                    <span asp-validation-for="LastName" class="text-danger"></span>
+                </div>
+                <div class="form-group bottom-space">
+                    <input asp-for="Image" type="file" accept="image/*" placeholder="Select a Photo" class="form-control bg-light" />
+                    <span asp-validation-for="Image" class="text-danger"></span>
+                </div>
+                <div class="input-group mb-3 bottom-space">
+                    <span asp-validation-for="Instagram" class="input-group-text" id="basic-addon3">instagram.com/</span>
+                    <input asp-for="Instagram" type="text" placeholder="user_name" class="form-control bg-light" id="basic-url" aria-describedby="basic-addon3">
+                </div>
+                <div class="input-group mb-3">
+                    <span asp-validation-for="Facebook" class="input-group-text" id="basic-addon3">facebook.com/</span>
+                    <input asp-for="Facebook" type="text" placeholder="user_name" class="form-control bg-light" id="basic-url" aria-describedby="basic-addon3">
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <div class="form-group bottom-space">
+                    <textarea asp-for="Bio" placeholder="Write a nice biography with keywords here..." class="form-control bg-light"></textarea>
+                    <span asp-validation-for="Bio" class="text-danger"></span>
+                </div>
+                <button class="w-100 btn btn-outline-dark text-light" type="button" data-bs-toggle="collapse" data-bs-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20px" viewBox="0 0 448 512"><path fill="#FCFCFC" d="M224 416c-8.188 0-16.38-3.125-22.62-9.375l-192-192c-12.5-12.5-12.5-32.75 0-45.25s32.75-12.5 45.25 0L224 338.8l169.4-169.4c12.5-12.5 32.75-12.5 45.25 0s12.5 32.75 0 45.25l-192 192C240.4 412.9 232.2 416 224 416z" /></svg>
+                </button>
+                <div class="collapse" id="collapseExample" style="background-color:black;">
+                    <div class="card card-body" style="background-color:black;">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <input asp-for="City" placeholder="City" type="text" accept="image/*" class="form-control bg-light" />
+                                    <span asp-validation-for="City" class="text-danger"></span>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <input asp-for="State" placeholder="State" type="text" class="form-control bottom-space bg-light" />
+                                    <span asp-validation-for="State" class="text-danger"></span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
             <div class="form-group">
-                <label asp-for="LastName" class="control-label"></label>
-                <input asp-for="LastName" class="form-control" />
-                <span asp-validation-for="LastName" class="text-danger"></span>
+                <input type="submit" value="Create" class="w-100 btn btn-outline-danger bottom-space" />
+                <a class="text-light" asp-action="Index">Back to List</a>
             </div>
-            <div class="form-group">
-                <label asp-for="FullName" class="control-label"></label>
-                <input asp-for="FullName" class="form-control" />
-                <span asp-validation-for="FullName" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="StageName" class="control-label"></label>
-                <input asp-for="StageName" class="form-control" />
-                <span asp-validation-for="StageName" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Bio" class="control-label"></label>
-                <textarea asp-for="Bio" class="form-control"></textarea>
-                <span asp-validation-for="Bio" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Image" class="control-label"></label>
-                <input asp-for="Image" class="form-control" />
-                <span asp-validation-for="Image" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Instagram" class="control-label"></label>
-                <input asp-for="Instagram" class="form-control" />
-                <span asp-validation-for="Instagram" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Facebook" class="control-label"></label>
-                <input asp-for="Facebook" class="form-control" />
-                <span asp-validation-for="Facebook" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Spotify" class="control-label"></label>
-                <input asp-for="Spotify" class="form-control" />
-                <span asp-validation-for="Spotify" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Soundcloud" class="control-label"></label>
-                <input asp-for="Soundcloud" class="form-control" />
-                <span asp-validation-for="Soundcloud" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <input type="submit" value="Create" class="btn btn-primary" />
-            </div>
-        </form>
-    </div>
+        </div>
+    </form>
 </div>
 
 <div>
-    <a asp-action="Index">Back to List</a>
 </div>
 
 @section Scripts {
-    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+    @{
+    await Html.RenderPartialAsync("_ValidationScriptsPartial");
+}
 }

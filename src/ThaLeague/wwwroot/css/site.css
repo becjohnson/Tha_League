@@ -1,18 +1,158 @@
 html {
-  font-size: 14px;
+    font-size: 14px;
+    background-color: rgba(var(--bs-dark-rgb), var(--bs-text-opacity));
 }
 
 @media (min-width: 768px) {
-  html {
-    font-size: 16px;
-  }
+    html {
+        font-size: 16px;
+    }
 }
 
 html {
-  position: relative;
-  min-height: 100%;
+    position: relative;
+    min-height: 100%;
 }
 
 body {
-  margin-bottom: 60px;
+    margin-bottom: 60px;
+    background-color: rgba(var(--bs-dark-rgb), var(--bs-text-opacity));
 }
+
+.curved {
+    border-radius: 15pt;
+}
+
+.br {
+    margin-bottom: -5px;
+}
+
+hr {
+    background-color: white;
+}
+
+.bottom-space {
+    margin-bottom: 5pt;
+}
+
+.navbar {
+    padding-bottom: 1.3rem;
+    margin-top: -.5rem;
+}
+
+.navbar-brand {
+    position: absolute;
+    left: 50%;
+    margin-left: -50px;
+    top: 5px;
+    margin-bottom: -10px;
+}
+
+
+@media screen and (max-width: 600px) {
+    .navbar {
+        position: relative;
+    }
+}
+
+@media screen and (max-width: 900px) {
+    .navbar {
+        position: relative;
+    }
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+h1 {
+    font-family: 'Frijole', cursive;
+    color: white;
+}
+
+h4 {
+    font-family: 'Oswald', sans-serif;
+    color: #FFFFFF;
+}
+
+h2 {
+    color: #FFFFFF;
+}
+
+html {
+    color: #FFFFFF;
+}
+
+h3 {
+    color: #FFFFFF;
+}
+
+h5 {
+    color: #FFFFFF;
+}
+
+h6 {
+    color: #FFFFFF;
+}
+
+ec-link {
+    color: #FFFFFF;
+}
+
+.nav-link {
+    margin-bottom: -10px;
+    margin-top: 15px;
+    margin-left: .5em;
+}
+
+.navbar-collapse {
+    float: left;
+}
+
+.resend {
+    margin-bottom: 10px;
+}
+
+a svg #home,
+a svg #music,
+a svg #artist,
+a svg #shop,
+a svg #videos {
+    transition: 200ms;
+    transition-timing-function: ease-in-out;
+    -webkit-transition: 200ms;
+    -webkit-transition-timing-function: ease-in-out;
+}
+
+a svg:hover #home,
+a svg:hover #music,
+a svg:hover #artist,
+a svg:hover #shop,
+a svg:hover #videos {
+    fill: red;
+}
+
+p {
+    color: white;
+}
+
+a {
+    color: #FFFFFF;
+}
+
+span {
+    color: white;
+}
+
+.ec-cart-widget {
+    position: relative;
+    left: 52.5em;
+    top: 1.7em;
+}
+
+#my-search-72247286 {
+    position: relative;
+    left: 25em;
+    top: 2.1em;
+}
+

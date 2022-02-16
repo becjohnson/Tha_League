@@ -11,5 +11,6 @@ namespace ThaLeague.Data
         {
         }
         public DbSet<ThaLeague.Models.Artist> Artist { get; set; }
+        public DbSet<ThaLeague.Models.Audio> Audio { get; set; }
     }
 }

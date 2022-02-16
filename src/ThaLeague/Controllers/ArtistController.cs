@@ -32,7 +32,8 @@ namespace ThaLeague.Models
             }
 
             var artist = await _context.Artist
-                .FirstOrDefaultAsync(m => m.ArtistId == id);
+                .Include(a => a.Audios)
+                .FirstOrDefaultAsync(a => a.ArtistId == id);
             if (artist == null)
             {
                 return NotFound();
@@ -52,7 +53,7 @@ namespace ThaLeague.Models
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create(ArtistViewModel artist)
+        public async Task<IActionResult> Create([Bind("FirstName,LastName,StageName,Bio,Instagram,Facebook,Spotify,Soundcloud,Image,State,City,DisplayName,ColorPicker")] ArtistViewModel artist)
         {
             string fileName = UploadImage(artist);
             if (ModelState.IsValid)
@@ -67,6 +68,10 @@ namespace ThaLeague.Models
                     Spotify = artist.Spotify,
                     Soundcloud = artist.Soundcloud,
                     Youtube = artist.Youtube,
+                    State = artist.State,
+                    City = artist.City,
+                    DisplayName = artist.DisplayName,
+                    ColorPicker = artist.ColorPicker,
                     Bio = artist.Bio,
                     Image = fileName,
                     StageName = artist.StageName
@@ -150,9 +155,11 @@ namespace ThaLeague.Models
         // POST: Artist/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
+        [Route("Artist/DeleteConfirmed/{id:int}")]
         public async Task<IActionResult> DeleteConfirmed(int? id)
         {
-            var artist = await _context.Artist.FindAsync(id);
+            var artist = await _context.Artist.Include(a => a.Audios)
+                .FirstOrDefaultAsync(a => a.ArtistId == id);
             _context.Artist.Remove(artist);
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
@@ -176,6 +183,5 @@ namespace ThaLeague.Models
             }
             return uniqueFileName;
         }
-
     }
 }
